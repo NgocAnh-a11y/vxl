@@ -1,0 +1,17 @@
+E3A01005 // 00: MOV R1, #5          -> R1 = 5   (da = 5)
+E3A0200A // 04: MOV R2, #10         -> R2 = 10  (da = 10)
+E0813002 // 08: ADD R3, R1, R2      -> R3 = 15  (da = 15)
+E0434001 // 0C: SUB R4, R3, R1      -> R4 = 10  (da = 10)
+E0035002 // 10: AND R5, R3, R2      -> R5 = 10  (da = 10)
+E1816002 // 14: ORR R6, R1, R2      -> R6 = 15  (da = 15)
+E1A07101 // 18: LSL R7, R1, #2      -> R7 = 20  (da = 20)
+E1A080A7 // 1C: LSR R8, R7, #1      -> R8 = 10  (da = 10)
+E5817064 // 20: STR R7, [R1, #100]  -> RAM[105] = 20 (da = 105, write_data = 20, mem_write = 1)
+E5919064 // 24: LDR R9, [R1, #100]  -> R9 = 20  (da = 105, mem_write = 0)
+EA000000 // 28: B   +0 (PC+8 = 30)  -> Nhảy thẳng tới địa chỉ 0x30, BỎ QUA lệnh 0x2C
+E3A0A063 // 2C: MOV R10, #99        -> Lệnh bẫy 1 (không chạy)
+E5819068 // 30: STR R9, [R1, #104]  -> RAM[109] = 20 (da = 109, write_data = 20, mem_write = 1)
+E1540002 // 34: CMP R4, R2          -> Tính R4 - R2 = 10 - 10 = 0 (da = 0, bật cờ Z = 1)
+0A000000 // 38: BEQ +0 (PC+8 = 40)  -> Vì Z = 1 nên cond_ex = 1 -> Nhảy tới 0x40 (da = 64), BỎ QUA 0x3C
+E3A0B058 // 3C: MOV R11, #88        -> Lệnh bẫy 2 (nếu BEQ đúng thì da KHÔNG BAO GIỜ ra 88)
+E581906C // 40: STR R9, [R1, #108]  -> RAM[113] = 20 (da = 113, write_data = 20, mem_write = 1)
